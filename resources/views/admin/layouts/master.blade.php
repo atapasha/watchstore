@@ -22,8 +22,10 @@
     <!-- begin::header -->
     @include('admin.layouts.header')
     <!-- end::header -->
+     @livewireStyles
     <!-- begin::main content -->
      @yield('content')
+     @livewireScripts
   
     <script src="{{ url('panel/vendors/bundle.js')  }} "></script>
     <script src="{{ url('panel/vendors/slick/slick.min.js')  }} "></script>
