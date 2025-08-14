@@ -33,7 +33,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [PanelController::class, 'index'])->name('panel');
-});
+    Route::resource('admin/users',UserController::class);
+
+}
+); 
 
 
-Route::resource('admin/users',UserController::class);
+ 

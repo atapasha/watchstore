@@ -27,6 +27,12 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">نام کاربری </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control text-left" dir="rtl" name="user_name">
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">ایمیل</label>
@@ -47,6 +53,8 @@
                         </div>
                     </div>
             
+            
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="file" name="file"> آپلود عکس </label>
                         <input class="col-sm-10" type="file"   name="file" class="form-control-file" id="file">

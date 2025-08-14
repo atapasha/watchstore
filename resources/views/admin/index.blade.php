@@ -100,7 +100,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                             <tr>
                                 <td class="text-center align-middle"></td>
                                 <td class="text-center align-middle">
                                     <figure class="avatar avatar">
