@@ -6,9 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens; 
+use Intervention\Image\Facades\Image;
 
-class User extends Authenticatable
+use Illuminate\Support\Facades\Storage;
+ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,6 +23,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile',
+        'photo',
+        'phone',
+        'status',
+        'is_admin',
+        'user_name'
     ];
 
     /**
@@ -42,4 +50,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+ 
+    
+    public static function saveImage($file)
+   
+    {
+ 
+        if ($file) {
+             $name = time() . '.' . $file->extension();
+    
+             $smallImage = Image::make($file->getRealPath());
+            $bigImage =Image::make($file->getRealPath());
+    
+            // تغییر اندازه تصویر کوچک به 256 در 256
+            $smallImage->resize(256, 256, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+    
+            Storage::disk('local')->put(
+                'admin/images/users/small/' . $name,
+                (string) $smallImage->encode('jpg', 80)
+            );
+            
+            Storage::disk('local')->put(
+                'admin/images/users/big/' . $name,
+                (string) $bigImage->encode('jpg', 80)
+            );
+            
+    
+            // برگرداندن نام فایل برای ذخیره در دیتابیس یا هر کار دیگر
+            return $name;
+        } else {
+            return '';
+        }
+    }
+    
 }

@@ -19,6 +19,8 @@ return new class extends Migration
 
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
+            $table->string('photo')->unique()->nullable();
+          
             $table->boolean('is_admin')->default(false);
  
             $table->string('status')->default(UserStatus::Active->value);
