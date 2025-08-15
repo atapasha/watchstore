@@ -53,16 +53,15 @@ use Illuminate\Support\Facades\Storage;
  
     
     public static function saveImage($file)
-   
+ 
     {
  
         if ($file) {
              $name = time() . '.' . $file->extension();
-    
+             dd(Image::class);
              $smallImage = Image::make($file->getRealPath());
-            $bigImage =Image::make($file->getRealPath());
-    
-            // تغییر اندازه تصویر کوچک به 256 در 256
+             $bigImage =Image::make($file->getRealPath());
+             // تغییر اندازه تصویر کوچک به 256 در 256
             $smallImage->resize(256, 256, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -78,11 +77,11 @@ use Illuminate\Support\Facades\Storage;
             );
             
     
-            // برگرداندن نام فایل برای ذخیره در دیتابیس یا هر کار دیگر
-            return $name;
+             return $name;
         } else {
             return '';
-        }
+        }    
+
     }
     
 }

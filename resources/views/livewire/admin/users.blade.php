@@ -2,7 +2,7 @@
          <div class="form-group row">
              <label class="col-sm-2 col-form-label">عنوان جستجو</label>
              <div class="col-sm-10">
-                 <input type="text" class="form-control text-left" dir="rtl" wire:model.debounce.500ms="search">
+                 <input type="text" class="form-control text-left" dir="rtl" wire:model="search">
              </div>
          </div>
          <table class="table table-striped table-hover">
@@ -26,7 +26,7 @@
                      <td class="text-center align-middle">{{ $users->firstItem() +$index}}</td>
                      <td class="text-center align-middle">
                          <figure class="avatar avatar">
-                             <img src="" class="rounded-circle" alt="image">
+                             <img src="{{ url('images/admin/users/big'.$user->photo)}}" class="rounded-circle" alt="image">
                          </figure>
                      </td>
                      <td class="text-center align-middle">{{ $user->name }}</td>
