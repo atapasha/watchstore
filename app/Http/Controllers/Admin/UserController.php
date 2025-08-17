@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
 
         $image = User::saveImage($request->file);
@@ -64,19 +66,21 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EditUserRequest $request, string $id)
     {
-        $user=User::query()->find('id');
+        $user=User::query()->find($id); 
         $image = User::saveImage($request->file);
 
-        $user->update($request->file);
-        User::query()->create([
+        $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'mobile' => $request->input('mobile'),
-            'password' => ( $request->input('password') ? Hash::make($request->input('password')):$user->password),
+            'password' => $request->input('password') 
+                ? Hash::make($request->input('password'))
+                : $user->password,
             'photo' => $image,
         ]);
+        
         return redirect()->route('users.index')->with('message', 'کاربر جدید با موفقیت  ویرایش شد');
 
     }

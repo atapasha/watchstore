@@ -2,6 +2,9 @@
 @section('content')
 <main class="main-content">
 
+
+@include(view: 'admin.layouts.errors')
+
     <div class="row">
 
         @if(\Illuminate\Support\Facades\Session::has('message'))

@@ -1,7 +1,8 @@
 @extends('admin.layouts.master')
 @section('content')
 <main class="main-content">
-
+@include( 'admin.layouts.errors')
+<!-- 
     <div class="row">
 
         @if(\Illuminate\Support\Facades\Session::has('message'))
@@ -12,7 +13,7 @@
         </div>
 
         @endif
-    </div>
+    </div> -->
 
     <div class="card">
         <div class="card-body">
