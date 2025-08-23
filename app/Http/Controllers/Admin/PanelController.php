@@ -12,3 +12,9 @@ class PanelController extends Controller
         return view('admin.index');
     }
 }
+
+
+
+
+
+ 

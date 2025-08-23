@@ -20,7 +20,7 @@
 
     <!-- end::navigation -->
     <!-- begin::header -->
-    @include('admin.layouts.header')
+    @include('admin.layouts.header',[$title=$title?? ""])
     <!-- end::header -->
      @livewireStyles
     <!-- begin::main content -->
